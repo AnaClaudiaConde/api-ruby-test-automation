@@ -1,0 +1,124 @@
+{
+	"info": {
+		"_postman_id": "6e4734e8-06bf-4cf0-8f59-35dae6189ee3",
+		"name": "DOTZ",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "planets",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6748b8ee-f2de-470b-9708-5b3f9318502a",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"const id = Math.floor((Math.random() * 100) + pm.response.json().count);\r",
+							"\r",
+							"pm.sendRequest(\"https://swapi.dev/api/planets/{{id}}\", function (err, response) {\r",
+							"    pm.test(\"Status code is 404\", function () {\r",
+							"        console.log(response)\r",
+							"        pm.expect(response.code).to.eql(404);\r",
+							"        pm.expect(response.status).to.eql(\"NOT FOUND\")\r",
+							"    });\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://swapi.dev/api/planets/",
+					"protocol": "https",
+					"host": [
+						"swapi",
+						"dev"
+					],
+					"path": [
+						"api",
+						"planets",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "films",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b17efb0f-01bd-4126-9486-2fb4e8646e1a",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Titles returned has the same amount of count\", function () {\r",
+							"    const resultJson = pm.response.json()\r",
+							"    const responseResults = pm.response.json().results;\r",
+							"\r",
+							"    let titles = []\r",
+							"    for(var i = 0; i < responseResults.length; i++){\r",
+							"        var adicionar = titles.push(responseResults[i].title)\r",
+							"    }\r",
+							"\r",
+							"    pm.expect(resultJson.count).to.eq(adicionar)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://swapi.dev/api/films/",
+					"protocol": "https",
+					"host": [
+						"swapi",
+						"dev"
+					],
+					"path": [
+						"api",
+						"films",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "e9e50963-ba13-4305-86a4-fcf0c5dc9467",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "4bf12c21-9243-4d95-90e0-2f045c108d15",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
