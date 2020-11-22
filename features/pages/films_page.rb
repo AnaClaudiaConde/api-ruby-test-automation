@@ -5,7 +5,7 @@ class Films
 
   base_uri API['base_uri']
 
-  def getFilms
+  def retrieve_films
     self.class.get('/films/')
   end
 end

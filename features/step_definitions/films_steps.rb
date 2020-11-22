@@ -1,5 +1,5 @@
 Quando('realizar uma requisição para consultar os filmes') do
-  @response = @films.getFilms
+  @response = @films.retrieve_films
 end
 
 Entao('armazeno os titulos dos filmes em uma variável') do
