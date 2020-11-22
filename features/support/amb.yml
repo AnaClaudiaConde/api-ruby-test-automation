@@ -1,0 +1,8 @@
+local:
+  base_uri:
+
+qa:
+  base_uri: 'https://swapi.dev/api'
+
+prod:
+  base_uri: 

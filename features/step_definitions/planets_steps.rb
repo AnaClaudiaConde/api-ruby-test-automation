@@ -1,9 +1,5 @@
 Quando('realizar uma requisição para consultar os planetas') do
   @response = @planets.get_planets
-
-#   puts "TESTE: #{@response}"
-#   puts "Count: #{@response['count']}"
-
 end
 
 Entao('a API deve retornar uma mensagem {string} e com o status {int}') do |message, int|

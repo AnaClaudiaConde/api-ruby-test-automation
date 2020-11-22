@@ -3,7 +3,7 @@ class Planets
 
   require_relative '../hooks/planets_hook'
 
-  base_uri 'https://swapi.dev/api'
+  base_uri API['base_uri']
 
   def get_planets(id = '')
     self.class.get("/planets/#{id}")
